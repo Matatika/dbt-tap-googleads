@@ -1,10 +1,8 @@
 version: 2
-
 sources:
   - name: googleads_source
     description: Google ads source table created by Matatika's tap-googleads
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
-    tables:
     tables:
       - name: stream_campaign
         description: Source table for campaigns.
