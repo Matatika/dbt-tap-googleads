@@ -1,9 +1,9 @@
 {{ config(materialized='table') }}
 
-with stream_adgroupsperformance as (
-    select * from {{ source('googleads_source', 'stream_adgroupsperformance') }}
+with ad_groups_performance as (
+    select * from {{ source('googleads_source', 'ad_groups_performance') }}
 ),
-ad_groups_performance as (
+final as (
     select
         ad_group__id as ad_group_id
         , campaign__id as campaign_id
@@ -11,6 +11,6 @@ ad_groups_performance as (
         , metrics__clicks as metrics_clicks
         , metrics__cost_micros as metrics_cost_micros
         , metrics__impressions as metrics_impressions
-    from stream_adgroupsperformance
+    from ad_groups_performance
 )
-select * from ad_groups_performance
+select * from final

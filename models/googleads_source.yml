@@ -6,7 +6,7 @@ sources:
     schema: "{{ env_var('DBT_SOURCE_SCHEMA') }}"
     tables:
     tables:
-      - name: stream_campaign
+      - name: campaign_history
         description: Source table for campaigns.
         columns:
           - name: campaign__id
@@ -21,7 +21,7 @@ sources:
             description: Customer linked to the campaign
             tests:
               - not_null
-      - name: stream_adgroups
+      - name: adgroups
         description: Source table for ad groups.
         columns:
           - name: ad_group__id
@@ -32,13 +32,13 @@ sources:
             description: A non unique ad group name
             tests:
               - not_null
-      - name: stream_adgroupsperformance
+      - name: ad_groups_performance
         description: Source table of Google Ads ad group performance
-      - name: stream_campaign_performance_by_age_range_and_device
+      - name: campaign_performance_by_age_range_and_device
         description: Source table of Google Ads campaign performance by age range and device
-      - name: stream_campaign_performance_by_gender_and_device
+      - name: campaign_performance_by_gender_and_device
         description: Source table of Google Ads campaign performance by gender and device
-      - name: stream_campaign_performance_by_location
+      - name: campaign_performance_by_location
         description: Source table of Google Ads campaign performance by location
-      - name: stream_campaign_performance
+      - name: campaign_performance
         description: Source table of Google Ads campaign performance

@@ -1,9 +1,9 @@
 {{ config(materialized='table') }}
 
-with stream_campaign_performance as (
-    select * from {{ source('googleads_source', 'stream_campaign_performance') }}
+with campaign_performance as (
+    select * from {{ source('googleads_source', 'campaign_performance') }}
 ),
-campaign_performance as (
+final as (
     select
         campaign__name as campaign_name
         , substring(campaign__resource_name, 11,10 ) as customer_id
@@ -15,6 +15,6 @@ campaign_performance as (
         , metrics__impressions as metrics_impressions
         , segments__date as segments_date
         , segments__device as segments_device
-    from stream_campaign_performance
+    from campaign_performance
 )
-select * from campaign_performance
+select * from final

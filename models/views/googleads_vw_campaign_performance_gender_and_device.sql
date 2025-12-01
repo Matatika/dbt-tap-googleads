@@ -1,9 +1,9 @@
 {{ config(materialized='table') }}
 
-with stream_campaign_performance_by_gender_and_device as (
-    select * from {{ source('googleads_source', 'stream_campaign_performance_by_gender_and_device') }}
+with campaign_performance_by_gender_and_device as (
+    select * from {{ source('googleads_source', 'campaign_performance_by_gender_and_device') }}
 ),
-campaign_performance_by_gender_and_device as (
+final as (
     select
         ad_group__name as ad_group_name
         , substring(ad_group__resource_name, 11,10 ) as customer_id
@@ -19,6 +19,6 @@ campaign_performance_by_gender_and_device as (
         , metrics__impressions as metrics_impressions
         , segments__date as segments_date
         , segments__device as segments_device
-    from stream_campaign_performance_by_gender_and_device
+    from campaign_performance_by_gender_and_device
 )
-select * from campaign_performance_by_gender_and_device
+select * from final
