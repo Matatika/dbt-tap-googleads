@@ -4,7 +4,7 @@ with campaign_performance_by_location as (
     select * from {{ source('googleads_source', 'campaign_performance_by_location') }}
 ),
 geo_target_constant as (
-    select * from "{{var('schema')}}".geo_target_constant
+    select * from {{ source('googleads_source', 'geo_target_constant') }}
 ),
 final as (
     select

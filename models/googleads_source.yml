@@ -40,5 +40,7 @@ sources:
         description: Source table of Google Ads campaign performance by gender and device
       - name: campaign_performance_by_location
         description: Source table of Google Ads campaign performance by location
+      - name: geo_target_constant
+        description: Source table of Google Ads geo target constants
       - name: campaign_performance
         description: Source table of Google Ads campaign performance
